@@ -1,0 +1,75 @@
+如何在Ubuntu安装pycharm的专业版，保姆级教学
+
+一、下载Pycharm2021.3版本
+
+        进入pycharm官网，点击Download下载按钮
+https://img-blog.csdnimg.cn/3cc019fbca954a5590106a31ee7c07ca.png
+ 	这里我们选择Other version，其他版本
+https://img-blog.csdnimg.cn/cec1e7cca3ae4b9fb3661ee31fb4a7bf.png
+        下拉选择2021.3版本（注意别选错了，其他版本不知道有没有用）
+https://img-blog.csdnimg.cn/eebfbe2261ad48a2b4286666539ec24f.png
+ 点击下载（注意：下载的是2021.3 - Linux (tar.gz)）
+https://img-blog.csdnimg.cn/5379a28e41f24c6e89d5fb1d9eeb423e.png
+    下载完成后，我们可以在下载文件夹下看到安装包
+https://img-blog.csdnimg.cn/2603a06c9d3e4a2196c20d8b78867a0a.png
+二、安装pycharm2021.3 
+
+        由于我们下载的安装包是压缩的形式，我们先把它提取出来 ,这里我预先已经提取出来了
+https://img-blog.csdnimg.cn/58d774aef9c44199bf69d31b163dde0a.png
+ 现在我们来看一下提取出来的文件结构：
+
+                  双击进去的第一层是“pycharm-2021.3”
+https://img-blog.csdnimg.cn/b03fbf9391d04bada412067da83a5a54.png
+       这里为了后面好操作我将其移动到“主目录”  下，就是“用户文件夹”下 
+https://img-blog.csdnimg.cn/8c8c34f331e74790a2c1f3a6649758c6.png
+https://img-blog.csdnimg.cn/3329149da1e742aaa9c0197fb2aeef8b.png
+  进入“pycharm-2021.3”可看到这些结构，找到bin这个文件夹：
+https://img-blog.csdnimg.cn/747779f9793142eab088b426c3750782.png
+这里我们选择bin这个文件继续进去 ，找到pycharm.sh和pycharm64.vmoptions这2个文件
+
+        其中pycharm.sh是运行文件，pycharm64.vmoptions是配置文件
+
+   我们先来修改一下配置文件 pycharm64.vmoptions：
+
+        将下面这段代码添加上去  注：-javaagent: 后面加的是文件fineagent.jar的路径
+
+        文件在文章最后有提供。
+-javaagent:/home/用户名/fineagent.jar
+https://img-blog.csdnimg.cn/1d19259dce59418eac8f57eb9c016b44.png
+ 添加好上面这段代码之后，我们将文件 fineagent.jar复制到“主目录”  下，就是“用户文件夹”下
+https://img-blog.csdnimg.cn/7c729511478a4cb4a10b89c58fdaa45e.png
+三、运行pycharm 
+
+        在终端进入pycharm的bin文件夹 ：
+https://img-blog.csdnimg.cn/4e910984b78a4fb6bf2be541245c610b.png
+https://img-blog.csdnimg.cn/ef0ec50c440f4a2e93291979084f0e6b.png
+ 通过下列命令运行pycharm 
+./pycharm.sh
+四、运行成功，输入破解码激活 
+
+        复制下列代码：
+5AYV1D1RE5-eyJsaWNlbnNlSWQiOiI1QVlWMUQxUkU1IiwibGljZW5zZWVOYW1lIjoiaHR0cHM6Ly93d3cuaml3ZWljaGVuZ3podS5jb20iLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJJSSIsImZhbGxiYWNrRGF0ZSI6IjIwOTktMTItMzEiLCJwYWlkVXBUbyI6IjIwOTktMTItMzEifSx7ImNvZGUiOiJBQyIsImZhbGxiYWNrRGF0ZSI6IjIwOTktMTItMzEiLCJwYWlkVXBUbyI6IjIwOTktMTItMzEifSx7ImNvZGUiOiJEUE4iLCJmYWxsYmFja0RhdGUiOiIyMDk5LTEyLTMxIiwicGFpZFVwVG8iOiIyMDk5LTEyLTMxIn0seyJjb2RlIjoiUFMiLCJmYWxsYmFja0RhdGUiOiIyMDk5LTEyLTMxIiwicGFpZFVwVG8iOiIyMDk5LTEyLTMxIn0seyJjb2RlIjoiR08iLCJmYWxsYmFja0RhdGUiOiIyMDk5LTEyLTMxIiwicGFpZFVwVG8iOiIyMDk5LTEyLTMxIn0seyJjb2RlIjoiRE0iLCJmYWxsYmFja0RhdGUiOiIyMDk5LTEyLTMxIiwicGFpZFVwVG8iOiIyMDk5LTEyLTMxIn0seyJjb2RlIjoiQ0wiLCJmYWxsYmFja0RhdGUiOiIyMDk5LTEyLTMxIiwicGFpZFVwVG8iOiIyMDk5LTEyLTMxIn0seyJjb2RlIjoiUlMwIiwiZmFsbGJhY2tEYXRlIjoiMjA5OS0xMi0zMSIsInBhaWRVcFRvIjoiMjA5OS0xMi0zMSJ9LHsiY29kZSI6IlJDIiwiZmFsbGJhY2tEYXRlIjoiMjA5OS0xMi0zMSIsInBhaWRVcFRvIjoiMjA5OS0xMi0zMSJ9LHsiY29kZSI6IlJEIiwiZmFsbGJhY2tEYXRlIjoiMjA5OS0xMi0zMSIsInBhaWRVcFRvIjoiMjA5OS0xMi0zMSJ9LHsiY29kZSI6IlBDIiwiZmFsbGJhY2tEYXRlIjoiMjA5OS0xMi0zMSIsInBhaWRVcFRvIjoiMjA5OS0xMi0zMSJ9LHsiY29kZSI6IlJNIiwiZmFsbGJhY2tEYXRlIjoiMjA5OS0xMi0zMSIsInBhaWRVcFRvIjoiMjA5OS0xMi0zMSJ9LHsiY29kZSI6IldTIiwiZmFsbGJhY2tEYXRlIjoiMjA5OS0xMi0zMSIsInBhaWRVcFRvIjoiMjA5OS0xMi0zMSJ9LHsiY29kZSI6IkRCIiwiZmFsbGJhY2tEYXRlIjoiMjA5OS0xMi0zMSIsInBhaWRVcFRvIjoiMjA5OS0xMi0zMSJ9LHsiY29kZSI6IkRDIiwiZmFsbGJhY2tEYXRlIjoiMjA5OS0xMi0zMSIsInBhaWRVcFRvIjoiMjA5OS0xMi0zMSJ9LHsiY29kZSI6IlJTVSIsImZhbGxiYWNrRGF0ZSI6IjIwOTktMTItMzEiLCJwYWlkVXBUbyI6IjIwOTktMTItMzEifV0sImhhc2giOiIxMjc5Njg3Ny8wIiwiZ3JhY2VQZXJpb2REYXlzIjo3LCJhdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlLCJpc0F1dG9Qcm9sb25nYXRlZCI6ZmFsc2V9-HNPogO0kWkHCVMnsjmBXUqQt87UPHqdkYqZGveSJtu8hb2V2Yq7gHsHenp4UuEd3jwEwC+YrUIf7U5yDA/56F5Sdn0RLUHZX5DHeQbJPbmYCBsDRT7m8rnmMFOSZn3vwNatvv1cooZbcGOk3Wwxx6bF7XcgaIrmXRcmZMZgv2PZehr0WS1HxNKe3X4nbGP3MwiSbg4ypmxNDrljmgv+Si9QDDwNLDffqeO0Lce0FqEJuMWmvBS42S0aeIYF8IS5bp4+LFKLJ8T7tF40OxKYDurBb9+9c43GZBscM/eLB8Jos66jNGFwgebFUlvhzJKVHZtuc/N8zGeEnTq6K0T/B8w==-MIIDTjCCAjagAwIBAgIBDTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMCAXDTE4MTEwMTEyMjk0NloYDzIwOTkwODA5MDIyNjA3WjAfMR0wGwYDVQQDDBRwcm9kMnktZnJvbS0yMDIwMTAxOTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMK3eyr0+Oys/TwcQO+qYaXWGBmXcEP4fR0bHHzZd/4WNGltXhecM80OWthA38BQRYAJBCKz/dSkO2Kj1H2y+7KB5cIaOiJEyTESfTSgzQdot6laRBU8oxy9mmagI46M8zEEmplPybY4YJj4HOwZiBsMQEMxoTgMDLpuHX6uASoVhSj6koB55lOj4wEgsQBeAMWTAXmTl88ixE179J8aBUkBGpL8w/tZzl9BJXZNF15gPfkS58rw8cdPzXLS0Yym37A2/KKFhfHzJc5KhbaxqYzmkAfTMqPsIqCQ1lQUAqfiPn2gN2I1Z3/cQuEW27M55fXVr2DduQe5DWzYJs85L50CAwEAAaOBmTCBljAJBgNVHRMEAjAAMB0GA1UdDgQWBBQk2hEilvWFQcCTR+gxI0z0wIQC/zBIBgNVHSMEQTA/gBSjnrZIZ0ISNkG9beC5tKBSi5fxs6EcpBowGDEWMBQGA1UEAwwNSmV0UHJvZmlsZSBDQYIJANJssYOyg3nhMBMGA1UdJQQMMAoGCCsGAQUFBwMBMAsGA1UdDwQEAwIFoDANBgkqhkiG9w0BAQsFAAOCAQEAsCQBjO5wttco/Z5cj/o4GBrku8UtBBBVFq4xsBanshTHm4deVxcTvta4aScV0TPKcaLqGqWx8A9v8XXO8dBbCuyXvWZteZ/C2Covg1xXiM99lz7VxqpjVmLdKanZn5u0gQSiYJdcfF+TdbmEIeSOnN/kLXNq2hXdJQK2zk2J25UZqu5EibRtTbdOzw6ZcfwJ8uOntXfsmAhnNICP3Wf/4wR/mwB0Ka4S+JA3IbF5MUmUZ/fjUaFarnin70us+Vxf/sZUi7u67wilvwVV0NAqDpthHUV0NRc4q+yOr2Dt/uCHdy4XRXLJfAv/z9/xBwNZZALNz3EtQL6IeIWWJByl3g==
+
+
+https://img-blog.csdnimg.cn/7da38dc5cd5b413e815bc9213b2b94e8.png
+https://img-blog.csdnimg.cn/373e6474f69e438f92553476f1c2ac02.png
+     激活成功实例：
+https://img-blog.csdnimg.cn/d18f50b6be804b608a918d951e7ce483.png
+到这里我们就已经成功在Ubuntu系统上激活pycharm专业版了， 欢迎大家在评论区讨论！！！
+
+文章所需要的pycharm版本和资料如下 ，我已经放在了网盘，有需要也可以加我微信发你！！！！
+
+ 链接：https://pan.baidu.com/s/1uZteOE7OcXfwP4mHC2hlrg
+
+提取码：x7x7 
+
+微信 如下：
+————————————————
+版权声明：本文为CSDN博主「@xuxin_2000」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_52466870/article/details/128134511
+https://img-blog.csdnimg.cn/4115133912824e0a8c9bdb62bafe9fc3.png
+注：如果文件pycharm64.vmoptions没有配置错误和文件fineagent.jar添加正确，pycharm是正常运行的 
+
+
+
+

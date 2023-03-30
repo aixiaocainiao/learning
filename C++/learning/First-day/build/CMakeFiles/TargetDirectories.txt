@@ -1,0 +1,3 @@
+/home/yunfang/C++/learning/First-day/build/CMakeFiles/rebuild_cache.dir
+/home/yunfang/C++/learning/First-day/build/CMakeFiles/main.dir
+/home/yunfang/C++/learning/First-day/build/CMakeFiles/edit_cache.dir

@@ -1,0 +1,120 @@
+1. 安装相关的依赖
+sudo apt-get install -y google-mock libboost-all-dev  libeigen3-dev libgflags-dev libgoogle-glog-dev liblua5.2-dev libprotobuf-dev  libsuitesparse-dev libwebp-dev ninja-build protobuf-compiler python-sphinx  ros-melodic-tf2-eigen libatlas-base-dev libsuitesparse-dev liblapack-dev
+2.下载安装包
+
+（因为命令下载太慢，所以我直接提前下载下来，主目录下建立cartographer_ws文件夹，cartographer_ws文件夹内建src文件夹，放入下载的cartographer，cartographer_ros，ceres-solver）
+
+mkdir cartographer
+cd cartographer
+mkdir src
+cd src
+git clone https://github.com/googlecartographer/cartographer_ros.git
+git clone https://github.com/googlecartographer/cartographer.git
+(git clone https://github.com/ceres-solver/ceres-solver.git)不用这个
+3.在上述建好的src文件夹下，获取ceres-solver源码
+
+wget ceres-solver.org/ceres-solver-1.13.0.tar.gz
+
+下载不成功的话，可以使用下面的链接下载
+
+版本为ceres-solver-1.13.0，对应的是ros-melodic的环境，激光--cartographer中使用-Linux文档类资源-CSDN下载
+
+切记：版本一定要对，否则编译不过去
+
+
+4接着
+cd ceres-solver
+mkdir build
+cd build
+cmake ..
+make -j 8 
+#make test  # 此选项可选
+sudo make install
+5、下载好的protobuf放在cartographer/scripts/目录下就行
+下载链接下载地址：https://codeload.github.com/google/protobuf/zip/v3.0.0
+6
+cd protobuf
+mkdir build
+cd build
+cmake -G Ninja \
+  -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+  -DCMAKE_BUILD_TYPE=Release \
+  -Dprotobuf_BUILD_TESTS=OFF \
+  ../cmake
+ 
+ninja
+sudo ninja install
+
+
+七、
+
+cd cartographer_ws
+rosdep update
+rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y（出错）
+
+解决：
+（1）rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y 行不通。pass
+（2）把：rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
+改成：rosdep install --from-paths ~/cartographer_ws/src --ignore-src -r
+OK！
+catkin_ws 自己的工作空间  我的是cartographer_ws
+————————————————
+
+
+
+执行catkin_make_isolated --install --use-ninja（出错）
+报错：
+<== Failed to process package 'cartographer': 
+  Command '['cmake', '/home/willingham/carto_ws/src/cartographer', '-DCMAKE_INSTALL_PREFIX=/home/willingham/carto_ws/install_isolated', '-G', 'Ninja']' returned non-zero exit status 1
+
+Reproduce this error by running:
+==> cd /home/willingham/carto_ws/build_isolated/cartographer && cmake /home/willingham/carto_ws/src/cartographer -DCMAKE_INSTALL_PREFIX=/home/willingham/carto_ws/install_isolated -G Ninja
+
+Command failed, exiting.
+
+解决：
+sudo apt-get install stow
+sudo chmod +x ~/cartographer_ws/src/cartographer/scripts/install_abseil.sh
+cd ~/cartographer_ws/src/cartographer/scripts
+./install_abseil.sh
+再执行一次catkin_make_isolated --install --use-ninja  成功
+
+八、
+source install_isolated/setup.bash
+下载DEMO测试
+2d slam
+wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/cartographer_paper_deutsches_museum.bag
+roslaunch cartographer_ros demo_backpack_2d.launch bag_filename:=${HOME}/Downloads/cartographer_paper_deutsches_museum.bag
+
+中间包括自己下载camke 3.11以上的版本
+1.通过以下命令查询cmake版本。
+	
+cmake --version
+
+2.这里，我并没有卸载旧版本的cmake，而是直接安装新版本，而且这样没有出现问题。【非必须】
+可去http://www.cmake.org/files查找需要的版本，写本博客时最新版为3.11.3，以此为例。
+	
+sudo apt-get install build-essential
+$ wget http://www.cmake.org/files/v3.11/cmake-3.11.3.tar.gz
+$ tar xf cmake-3.11.3.tar.gz
+$ cd cmake-3.11.3
+$ ./configure
+$ make
+$ sudo make install
+
+3.创建cmake的软连接(我这里自动连接了)　(我没有整这一步也是OK的 没必要的）跳转第四部	
+1.ln -sf /your cmake3.11 path/bin/*  /usr/bin/
+2.ln -sf /your/cmake-3.11.3/path/bin/*  /usr/bin/
+
+如果需要要换成自己的实际路径
+
+ 
+4.然后，输入以下命令查询cmake版本。
+1
+	
+cmake --version
+
+如果输出以下信息，则表明安装成功。
+cmake version 3.11
+————————————————
+

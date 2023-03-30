@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/siyun.jpg</file>
+        <file>image/微信图片_20221004212408.jpg</file>
+        <file>image/微信图片_20221004212419.jpg</file>
+        <file>image/微信图片_20221006112917.jpg</file>
+    </qresource>
+</RCC>

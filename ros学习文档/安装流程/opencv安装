@@ -1,0 +1,90 @@
+6.设置opencv静态库加载路径
+
+打开配置文件：sudo gedit /etc/ld.so.conf
+
+
+
+加入编译后lib文件夹路径，形式如下所示，但应做修改：
+include /home/***/opencv-3.4.x/build/lib
+
+原来的
+include /etc/ld.so.conf.d/*.conf
+安装流程
+sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+出现错误：E: 无法定位软件包 libjasper-dev
+执行这一步即可
+sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+sudo apt update
+sudo apt install libjasper1 libjasper-dev
+cd ~/opencv-3.4.15/build/
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ..
+
+
+一、安装流程：
+ubuntu 18.04 安装OpenCV 4.1.0版本
+先下载OpenCV和OpenCV_contrib
+
+git clone https://github.com/Itseez/opencv.git
+git clone https://github.com/Itseez/opencv_contrib.git
+
+其中opencv_contrib放入opencv文件夹中
+2.安装依赖
+# 更新源，安装软件包
+sudo apt update && sudo apt install -y cmake g++ wget unzip
+ 
+#安装依赖
+sudo apt-get install build-essential libgtk2.0-dev libavcodec-dev libavformat-dev libjpeg-dev libswscale-dev libtiff5-dev
+sudo apt-get install libgtk2.0-dev
+sudo apt-get install pkg-config
+出现错误：E: 无法定位软件包 libjasper-dev
+执行这一步即可
+sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+sudo apt update
+sudo apt install libjasper1 libjasper-dev
+cd ~/opencv-3.4.15/build/
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ..
+3.在build文件夹下执行cmake
+cd opencv/
+mkdir build
+cd build/
+(cd ~/opencv-3.4.15/build/)看一下上面 整过了就不用整了
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.4.15/modules ..
+opencv_contrib-3.4.15需要修改成自己的文件夹名字
+4.编译
+
+这里的j4是针对性能不好的电脑，我这里电脑性能比较强，选择j32编译,s数据越大编译的速度就越快。
+make -j4
+
+5.安装到系统
+sudo make install
+添加路径
+sudo gedit /etc/ld.so.conf.d/opencv.conf
+
+然后在打开文件中添加如下内容
+/usr/local/lib
+之后再终端输入以下命令（安装完成某个工程后生成许多动态库，该命令是为了让这些动态链接库为系统所共享）
+sudo ldconfig
+
+使其保存并生效。
+再在终端输入
+
+sudo gedit /etc/bash.bashrc
+
+打开文件后在末尾输入：
+
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH
+保存退出，终端输入：
+source /etc/bash.bashrc
+至此，opencv及opencv_contrib安装配置完成了！
+
+6.测试安装的文件
+
+进入opencv/samples/cpp/example_cmake目录下，终端打开，依次输入：
+cd ../samples/cpp/example_cmake
+cmake .
+make
+./opencv_example
+

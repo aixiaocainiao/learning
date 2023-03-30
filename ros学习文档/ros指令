@@ -1,0 +1,50 @@
+odm  framd_id odm_combined
+map  map 
+nase_frame_id base_footprint
+
+scan  scan
+ 查看某个具体的消息 需要使用管道 
+rosmsg list | grep -i 话题名称
+校园网址
+https://120.199.39.54:7090/zmcc/indexForce.wlan?wlanuserip=10.137.237.63&wlanacname=0437.0571.571.00
+
+C语言学习中递归函数  
+ctrl+shift+空格出现代码提示
+使用rosparam导入参数 
+设置的参数.yaml文件中 需要加空格 例如bg_R: 100
+rosparam 便签 会率先执行 所以在使用dump导出参数的时候需要自己直接写一个launch文件
+
+写代码之前操作
+
+mkdir -p xxx_ws/src(必须得有 src)
+cd xxx_ws
+catkin_make
+cd xxx_ws
+code .
+
+
+rviz中 ctrl+shift+鼠标可以拖动位置
+args="-d $(find urdf01_rviz)/config/show_mycar.rviz"
+这玩意保存的时配置 不是rviz里面显示的东西 
+solidworks
+joint origin是joint相对于parent的位置
+[joint_state_publisher-4] process has died [pid 12169, exit code 1, cmd /opt/ros/melodic/lib/joint_state_publisher/joint_state_publisher __name:=joint_state_publisher __log:=/home/yunfang/.ros/log/3c02610c-bfaa-11ed-a76e-30d16b56c4c1/joint_state_publisher-4.log].
+log file: /home/yunfang/.ros/log/3c02610c-bfaa-11ed-a76e-30d16b56c4c1/joint_state_publisher-4*.log
+
+出现下面的错误 请删除掉urdf里面的中文注释 melidic中不能有一点点中文
+evince mycar.pdf
+arbotix报错，进入src下的arbotix_ros功能包，进入arbotix_python，进入bin，进入arbotix_driver
+将第一行中的python的运行版本从3改为2.7运行就可以了
+rviz中fixed frame为 odm
+gazebo有进程问题 请执行下面指令 直接杀死
+killall gzserver
+ 
+killall gzclient
+
+
+tar -xvf arduino-1.x.y-linux64.tar.xz
+tar解压命令 
+
+
+<node name="playbag" pkg="rosbag" type="play"
+      args="--clock $(arg bag_filename)" />

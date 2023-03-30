@@ -1,0 +1,4 @@
+git clone https://github.com/xiangli0608/cartographer_detailed_comments_ws
+
+
+sudo gedit ~/.bashrc

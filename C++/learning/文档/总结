@@ -1,0 +1,2 @@
+char *p = (char*)&a;
+将变量a的地址强制转换为char*的地址 赋值给char*型指针

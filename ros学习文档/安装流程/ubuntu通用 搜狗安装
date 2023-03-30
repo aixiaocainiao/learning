@@ -1,0 +1,54 @@
+安装fcitx
+sudo apt-get install fcitx-bin 
+
+第一步，安装sogoupinyin_4.0.1.2800_x86_64.deb包；
+通过命令行重新安装搜狗输入法，安装包官网下载链接
+sudo dpkg –i sogoupinyin_4.0.1.2800_x86_64.deb
+安装中文支持包
+
+打开setting－> Region & Lannguage -> InputSource下的Manage installation Language
+
+
+
+点击Installation/ Remove Language
+勾选中文（简体），并点击应用
+
+keyboard input method system选择：fcitx
+————————————————
+点击应用到全局，然后重启
+
+1、通过命令行更新系统（如果因网络连接问题无法更新，可以选择换源）
+
+sudo apt-get update
+sudo apt-get upgrade
+
+
+2、通过命令行安装aptitude
+
+sudo apt-get install aptitude
+
+    
+
+3、通过命令行利用aptitude 安装fcitx、qt
+
+sudo aptitude install fcitx-bin fcitx-table fcitx-config-gtk fcitx-config-gtk2 fcitx-frontend-all
+sudo aptitude install qt5-default qtcreator qml-module-qtquick-controls2
+
+
+
+4、如果右上角没有出现fcitx，在终端中输入im-config进行配置
+
+5、通过命令行重新安装搜狗输入法
+
+sudo dpkg –i sogoupinyin_4.0.1.2800_x86_64.deb
+
+第二步，安装依赖。因为我之前安装好deb包后直接以为安装完成了，忽略了第二步要安装依赖。（这步骤很关键）
+安装官网给出的两条命令，在终端执行
+
+sudo apt install libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2
+ 
+sudo apt install libgsettings-qt1
+最后卸载ibus 
+sudo apt-get purge ibus
+6、重启完成即可使用（如果没有，需在右上角fcitx配置中添加搜狗输入法）
+————————————————
